@@ -1,0 +1,9 @@
+---
+oauth:
+    consumer:
+        key: 'ck'
+        secret: 'cs'
+    access_token:
+        key: 'atk'
+        secret: 'ats'
+...
