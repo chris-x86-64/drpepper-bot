@@ -3,17 +3,15 @@
 import urllib
 from bs4 import BeautifulSoup
 
-def check_price(target_url):
-	content = urllib.urlopen(target_url)
+def check_item(target):
+	content = urllib.urlopen(target['url'])
 	parser = BeautifulSoup(content)
-	price = filter(
-		lambda x: x.isdigit(),
-		parser.findAll('b', {'class':'priceLarge'})[0].contents[0].strip()
-	)
-	print price
+	price_str = parser.findAll('b', {'class':'priceLarge'})[0].contents[0].strip()
+	price = int(filter(lambda x: x.isdigit(), price_str))
+	return {'item_name': target['name'], 'price_str': price_str, 'price': price}
 
 if __name__ == '__main__':
 	try:
-		check_price('http://www.amazon.co.jp/dp/B001U7651A/')
+		print check_item({'name':'500mlペット*24本', 'url': 'http://www.amazon.co.jp/dp/B001U7651A/'})
 	except:
 		raise
