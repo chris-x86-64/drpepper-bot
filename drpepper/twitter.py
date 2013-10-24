@@ -21,7 +21,15 @@ def prepare_api():
 
 def test():
 	api = prepare_api()
-	print api.me().__dict__
+	try:
+		print api.me().__dict__
+	except:
+		raise
+
+	try:
+		api.update_status(u'tesutesu')
+	except:
+		raise
 
 if __name__ == '__main__':
 	test()
