@@ -5,20 +5,16 @@ import yaml
 
 config = yaml.load(open("config.yml"))
 
-class Keys():
-	keys = config['oauth']
-	class consumer():
-		key = keys['consumer']['key']
-		secret = keys['consumer']['secret']
-	class access_token():
-		key = keys['access_token']['key']
-		secret = keys['access_token']['secret']
+class Keys(object):
+	class consumer(object):
+		key = config['oauth']['consumer']['key']
+		secret = config['oauth']['consumer']['secret']
+	class access_token(object):
+		key = config['oauth']['access_token']['key']
+		secret = config['oauth']['access_token']['secret']
 
 def main():
 	print Keys.consumer.key
 
 if __name__ == '__main__':
-	try:
-		main()
-	except KeyboardInterrupt:
-		quit()
+	main()
