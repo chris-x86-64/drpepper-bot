@@ -3,12 +3,15 @@
 
 import drpepper.scraper
 import drpepper.twitter
+import yaml
 
 def main():
-	print "There's nothing really to do."
+	items = yaml.load(open("config.yml"))['items']
 
-def test():
-	print "I'm sleepy"
+	for item in items:
+		drpepper.twitter.post(
+			drpepper.scraper.check_item(item)
+		)
 
 if __name__ == '__main__':
-	test()
+	main()
