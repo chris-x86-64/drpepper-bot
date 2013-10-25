@@ -8,8 +8,8 @@ oauth:
         secret: 'ats'
 
 items:
-    - name: '500mlペット*24本'
+    - name: 'ドクターペッパー 500mlペット*24本'
       url: 'http://www.amazon.co.jp/dp/B001U7651A/'
-    - name: '350ml缶*24本'
+    - name: 'ドクターペッパー 350ml缶*24本'
       url: 'http://www.amazon.co.jp/dp/B001DDOIBU/'
 ...
