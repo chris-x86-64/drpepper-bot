@@ -12,8 +12,16 @@ def check_item(target):
 
 	return {'item': target, 'price': {'str': price_str, 'int': price}}
 
+def test():
+	import yaml
+
+	items = yaml.load(open("config.yml"))['items']
+
+	for item in items:
+		try:
+			print check_item(item)
+		except:
+			raise
+
 if __name__ == '__main__':
-	try:
-		print check_item({'name':'500mlペット*24本', 'url': 'http://www.amazon.co.jp/dp/B001U7651A/'})
-	except:
-		raise
+	test()
