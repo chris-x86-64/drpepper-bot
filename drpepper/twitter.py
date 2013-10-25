@@ -18,7 +18,7 @@ def post(item, price):
 	status = Template(
 		u'${date_and_time} 現在の ${item} の価格: ${price} (前日比 ${diff}) ${url}'
 		).substitute(
-			{'date_and_time': now, 'item': item['name'], 'price': price['str'], 'diff': 0, 'url': item['url']}
+			{'date_and_time': now, 'item': item['name'], 'price': price['str'], 'diff': None, 'url': item['url']}
 		)
 	return status
 
