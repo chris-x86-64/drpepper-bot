@@ -18,13 +18,16 @@ def post(item, price):
 	status = Template(
 		u'${date_and_time} 現在の ${item} の価格: ${price} (前日比 ${diff}) ${url}'
 		).substitute(
-			{'date_and_time': now, 'item': item, 'price': price, 'diff': 0, 'url': 'nanka'}
+			{'date_and_time': now, 'item': item['name'], 'price': price['str'], 'diff': 0, 'url': item['url']}
 		)
 	return status
 
 def test():
+	items = yaml.load(open("config.yml"))['items']
 	api = prepare_api()
-	print post(u'なんか', u'￥ 100')
+
+	for item in items:
+		print post(item, {'str': u'￥ 100', 'int': 100})
 	try:
 		print api.me().__dict__
 	except:
